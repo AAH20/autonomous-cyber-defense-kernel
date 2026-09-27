@@ -10,6 +10,48 @@ A high-performance, **zero-dependency defensive cybersecurity algorithmic kernel
 
 ---
 
+## System Architecture
+
+```mermaid
+flowchart TD
+    subgraph IngressCompromiseTelemetry["1. Enterprise Ingress & Threat Telemetry"]
+        ALERTS["Raw SIEM / EDR Alert Stream<br>Process Events, Syslog, NetFlow, DNS"]
+        INGRESS["Compromised Ingress Hosts<br>Active Ransomware / C2 Beacons"]
+    end
+
+    subgraph CausalCorrelationEngine["2. Causal Kill-Chain Stream Correlator"]
+        CORRELATOR["CausalKillChainCorrelator<br>MITRE ATT&CK Temporal DAG Partitioning<br>Init Access -> Exec -> PrivEsc -> Lateral -> Exfil<br><b>85.2% Alert Noise Reduction | 11 APT Chains Isolated</b>"]
+    end
+
+    subgraph IdentityAndPatchVerification["3. Identity Deconfliction & Binary Remediation"]
+        IAM_GRAPH["Active Directory / IAM Graph<br>Transitive Delegations & Privilege Escalations"]
+        FAS["IdentityPrivilegeDeconflictionSolver<br>Minimum Feedback Arc Set (FAS) on Hypergraphs<br>In/Out Degree Topological Differential Ordering<br><b>Zero Circular Privilege Backdoors | Cleaned Delegations</b>"]
+        CFI["CfiBinaryPatchVerifier<br>Formal Forward/Backward-Edge CFI Proofs<br>Shadow Return Sites, Branch Bounds, Canary Invariants<br><b>100% Exploit-Free Hot-Patch Verification</b>"]
+    end
+
+    subgraph GameTheoreticDeception["4. Bilevel Stackelberg Deception Allocation"]
+        SUBNETS["15 Monitored Enterprise Subnets"]
+        STACKELBERG["StackelbergHoneynetAllocator<br>Bilevel Security Game Equilibrium<br>max Sum P_attack(k)[P_entrap R_det - (1-P_entrap)L_breach] - c_k<br><b>56.7% Attacker Entrapment Likelihood</b>"]
+    end
+
+    subgraph BlastRadiusContainment["5. Dynamic Network Quarantine"]
+        MINCUT["AttackGraphMinCutIsolator<br>Min-Capacity Multi-Terminal Cut on Residual DAGs<br>min Sum BusinessCost(e) s.t. Path(s, t) Cut = Empty<br><b>$2,193 Minimal Disruption | Zero Crown Reachability</b>"]
+        CROWN_JEWELS["Core Enterprise Crown Jewels<br>Domain Controllers, DB Clusters, Key Vaults"]
+    end
+
+    ALERTS --> CORRELATOR
+    CORRELATOR --> INGRESS
+    INGRESS --> MINCUT
+    MINCUT -. Severed 11 Firewall Edges .-> CROWN_JEWELS
+    IAM_GRAPH --> FAS
+    FAS -. Cleaned Delegations .-> CROWN_JEWELS
+    SUBNETS --> STACKELBERG
+    STACKELBERG -. Honeynet Decoy Traffic .-> CORRELATOR
+    CORRELATOR --> CFI
+```
+
+---
+
 ## 1. Executive Summary & Benchmark Telemetry
 
 ```
