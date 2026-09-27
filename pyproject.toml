@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autonomous-cyber-defense-kernel"
+version = "0.1.0"
+description = "Algorithmic Solvers for Autonomous Cyber Defense, Attack-Graph Multi-Cut Isolation, Stackelberg Deception, and CFI Hot-Patching"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Autonomous Cyber Defense Research Group", email = "defense@cyber-kernel.internal"}
+]
+keywords = [
+    "cybersecurity",
+    "incident-response",
+    "attack-graph",
+    "zero-trust",
+    "mitre-attack",
+    "min-cut",
+    "stackelberg-game",
+    "cfi-verification",
+    "privilege-escalation",
+    "siem-correlation",
+    "np-hard"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: System :: Networking",
+    "Topic :: System :: Systems Administration"
+]
+
+[project.scripts]
+cyber-defense = "autonomous_cyber_defense_kernel.cli:main"
